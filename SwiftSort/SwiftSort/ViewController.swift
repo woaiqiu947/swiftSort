@@ -476,7 +476,26 @@ class ViewController: NSViewController {
     }
 
     /*
-     
+     这个函数接受一个有序整数数组 array 和一个目标值 target，返回目标值在数组中的下标。在函数内部，使用两个指针 left 和 right 来表示数组的左右边界，然后计算中间位置的索引 mid，查看中间位置的元素是否等于目标值，如果是，直接返回中间位置的索引，如果不是，根据中间位置元素与目标值的大小关系来调整左右边界的值，然后再次计算中间位置索引，直到找到目标值或者左右边界重合没有找到目标值。
      */
+    func binarySearch(_ array: [Int], target: Int) -> Int? {
+    var left = 0
+    var right = array.count - 1
+
+    while left <= right {
+        let mid = (left + right) / 2
+
+        if array[mid] == target {
+            return mid
+        } else if array[mid] < target {
+            left = mid + 1
+        } else {
+            right = mid - 1
+        }
+    }
+
+    return nil
+}
+
 }
 
